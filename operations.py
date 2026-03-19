@@ -4,13 +4,15 @@ from colorama import Fore, Style, init
 init()
 
 
-def add_task(task_name):
+def add_task(task_name, priority="Medium", deadline=None):
 
     tasks = load_tasks()
 
     task = {
         "name": task_name,
-        "done": False
+        "done": False,
+        "priority": priority,
+        "deadline": deadline
     }
 
     tasks.append(task)
@@ -32,7 +34,12 @@ def list_tasks():
 
         color = Fore.GREEN if task["done"] else Fore.RED
 
+        # ----Safe Access----
+        priority = task.get("priority", "Medium")
+        deadline = task.get("deadline", "No deadline")
+
         print(color + f"{index+1}. {task["name"]} {status}" + Style.RESET_ALL)
+        print(f" priority: {priority} || deadline: {deadline}")
 
 
 def mark_done(index):
@@ -63,3 +70,17 @@ def delete_task(index):
     save_tasks(tasks)
 
     print(Fore.GREEN + "✔ Task deleted successfully" + Style.RESET_ALL)
+
+
+def edit_task(index, new_name):
+    tasks = load_tasks()
+
+    if index < 0 or index >= len(tasks):
+        print("Invalid task number")
+        return
+
+    tasks[index]["name"] = new_name
+
+    save_tasks(tasks)
+
+    print("✔ Task updated successfully")

@@ -8,6 +8,7 @@ A simple and powerful command-line To-Do manager built using Python.
 - List tasks
 - Mark tasks as done
 - Delete tasks
+- Edit tasks
 - Persistent storage using JSON
 - Colored CLI output
 
@@ -32,6 +33,7 @@ python todo.py add "Learn Python"
 python todo.py list
 python todo.py done 1
 python todo.py delete 1
+python todo.py edit 1 "Learn APIs"
 python todo.py help
 ```
 

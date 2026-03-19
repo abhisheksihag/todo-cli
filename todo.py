@@ -1,5 +1,5 @@
 import sys
-from operations import add_task, list_tasks, mark_done, delete_task
+from operations import add_task, list_tasks, mark_done, delete_task, edit_task
 
 # ----CLI Logic----
 
@@ -10,7 +10,7 @@ if len(sys.argv) < 2:
 
 command = sys.argv[1]
 
-valid_commands = ["add", "list", "done", "delete", "help"]
+valid_commands = ["add", "list", "done", "delete", "help", "edit"]
 
 if command not in valid_commands:
     print("Invalid Command")
@@ -24,7 +24,10 @@ if command == "add":
         sys.exit()
 
     task_name = sys.argv[2]
-    add_task(task_name)
+
+    priority = sys.argv[3] if len(sys.argv) > 3 else "Medium"
+    deadline = sys.argv[4] if len(sys.argv) > 4 else None
+    add_task(task_name, priority, deadline)
 
 elif command == "list":
     list_tasks()
@@ -44,6 +47,15 @@ elif command == "delete":
 
     index = int(sys.argv[2]) - 1
     delete_task(index)
+
+elif command == "edit":
+    if len(sys.argv) < 4:
+        print("Usage: python3 todo.py edit <task_number> <new_name>")
+        sys.exit()
+    index = int(sys.argv[2]) - 1
+    new_name = sys.argv[3]
+
+    edit_task(index, new_name)
 
 elif command == "help":
     print("""
