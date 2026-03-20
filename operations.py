@@ -29,12 +29,19 @@ def list_tasks():
         return
     print(Fore.CYAN + "\nYour Tasks:\n" + Style.RESET_ALL)
 
+    # Priority order
+    priority_order = {"High": 1, "Medium": 2, "Low": 3}
+
+    # Sort tasks
+    tasks.sort(key=lambda task: priority_order.get(
+        task.get("priority", "Medium"), 2))
+
     for index, task in enumerate(tasks):
         status = "✅" if task["done"] else "❌"
 
         color = Fore.GREEN if task["done"] else Fore.RED
 
-        # ----Safe Access----
+        # ----Safe Access by using get()----
         priority = task.get("priority", "Medium")
         deadline = task.get("deadline", "No deadline")
 
