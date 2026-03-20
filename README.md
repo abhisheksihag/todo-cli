@@ -1,59 +1,110 @@
-# 📝 CLI To-Do Manager (Python)
+# 📝 Advanced CLI To-Do Manager (Python)
 
-A simple and powerful command-line To-Do manager built using Python.
+A professional command-line To-Do manager built using Python with clean architecture, modular design, and real-world features.
+
+---
 
 ## 🚀 Features
 
-- Add tasks
-- List tasks
-- Mark tasks as done
-- Delete tasks
-- Edit tasks
-- Persistent storage using JSON
-- Colored CLI output
+- ✅ Add tasks with priority & deadline
+- 📋 List tasks (sorted by priority)
+- ✔ Mark tasks as completed
+- 🗑 Delete tasks
+- ✏ Edit tasks
+- 🎨 Colored CLI output
+- 💾 Persistent storage using JSON
+- 🧠 Input validation & error handling
+- 🧱 Modular code structure
+
+---
 
 ## 🛠 Tech Stack
 
 - Python
-- JSON
-- Colorama
+- JSON (data storage)
+- Colorama (CLI styling)
+
+---
 
 ## 📦 Installation
 
 ```bash
 git clone <your-repo-link>
-cd TodoList
+cd todo-cli
 pip install colorama
 ```
 
+---
+
 ## ▶️ Usage
 
+### Add task
+
 ```bash
-python todo.py add "Learn Python"
+python todo.py add "Learn FastAPI" High 2026-04-01
+```
+
+### List tasks
+
+```bash
 python todo.py list
+```
+
+### Mark task as done
+
+```bash
 python todo.py done 1
+```
+
+### Delete task
+
+```bash
 python todo.py delete 1
-python todo.py edit 1 "Learn APIs"
+```
+
+### Edit task
+
+```bash
+python todo.py edit 1 "Master Python"
+```
+
+### Help
+
+```bash
 python todo.py help
 ```
+
+---
 
 ## 📂 Project Structure
 
 ```
-TodoList/
+todo-cli/
 │
-├── todo.py
-├── operations.py
-├── storage.py
-└── tasks.json
+├── todo.py          # CLI entry point
+├── operations.py    # business logic
+├── storage.py       # data handling
+└── tasks.json       # local storage
 ```
 
-## 💡 Future Improvements
+---
 
-- Task deadlines
-- Priority levels
+## 🧠 Key Learnings
+
+- CLI application development
+- Modular Python architecture
+- File handling & JSON storage
+- Input validation & error handling
+- Clean code practices
+
+---
+
+## 🔮 Future Improvements
+
+- Task deadlines reminders
+- Search & filter tasks
 - GUI version
-- Web version (FastAPI)
+- Web app (FastAPI backend)
 
 ---
 
