@@ -59,11 +59,26 @@ elif command == "edit":
 
 elif command == "help":
     print("""
-    Available commands:
-          
-    python3 todo.py add "task name"
-    python3 todo.py list
-    python3 todo.py done <task number>
-    python3 todo.py delete <task number>
-    python3 todo.py help                                        
+    📌 Available Commands:
+
+➤ Add task:
+   python todo.py add "task" [priority] [deadline]
+
+➤ List tasks:
+   python todo.py list
+
+➤ Mark done:
+   python todo.py done <task_number>
+
+➤ Delete task:
+   python todo.py delete <task_number>
+
+➤ Edit task:
+   python todo.py edit <task_number> "new name"
+
+📌 Priority:
+   High / Medium / Low
+
+📌 Example:
+   python todo.py add "Learn FastAPI" High 2026-04-01                                      
     """)

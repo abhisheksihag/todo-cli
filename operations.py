@@ -8,12 +8,20 @@ def add_task(task_name, priority="Medium", deadline=None):
 
     tasks = load_tasks()
 
+    task_name = task_name.strip()
+
+    priority = priority.capitalize()
+
     task = {
         "name": task_name,
         "done": False,
         "priority": priority,
         "deadline": deadline
     }
+
+    if priority not in ["High", "Medium", "Low"]:
+        print("Invalid priority. Use High/Medium/Low")
+        return
 
     tasks.append(task)
     save_tasks(tasks)
@@ -61,6 +69,13 @@ def mark_done(index):
         print(Fore.RED + "Invalid task number" + Style.RESET_ALL)
         return
 
+    # Priority order
+    priority_order = {"High": 1, "Medium": 2, "Low": 3}
+
+    # Sort tasks
+    tasks.sort(key=lambda task: priority_order.get(
+        task.get("priority", "Medium"), 2))
+
     tasks[index]["done"] = True
 
     save_tasks(tasks)
@@ -70,6 +85,13 @@ def mark_done(index):
 
 def delete_task(index):
     tasks = load_tasks()
+
+    # Priority order
+    priority_order = {"High": 1, "Medium": 2, "Low": 3}
+
+    # Sort tasks
+    tasks.sort(key=lambda task: priority_order.get(
+        task.get("priority", "Medium"), 2))
 
     # Error Handling
     if index < 0 or index >= len(tasks):
