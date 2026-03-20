@@ -27,7 +27,10 @@ def list_tasks():
     if not tasks:
         print(Fore.YELLOW + "No tasks found" + Style.RESET_ALL)
         return
-    print(Fore.CYAN + "\nYour Tasks:\n" + Style.RESET_ALL)
+
+    print("="*40)
+    print(Fore.CYAN + "             Your Tasks" + Style.RESET_ALL)
+    print("="*40)
 
     # Priority order
     priority_order = {"High": 1, "Medium": 2, "Low": 3}
@@ -47,6 +50,7 @@ def list_tasks():
 
         print(color + f"{index+1}. {task["name"]} {status}" + Style.RESET_ALL)
         print(f" priority: {priority} || deadline: {deadline}")
+        print("-"*40)
 
 
 def mark_done(index):
